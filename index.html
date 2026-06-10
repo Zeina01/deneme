@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تقرير التدقيق الاستراتيجي — مؤسسة الزورد</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --manar-blue: #1A3F6F;
+    --manar-mid: #2563A8;
+    --manar-light: #D6E8F7;
+    --manar-pale: #EEF5FC;
+    --accent: #2C7BE5;
+    --ink: #1C2B3A;
+    --ink-secondary: #4A5568;
+    --ink-muted: #718096;
+    --surface: #F7FAFC;
+    --surface-2: #EDF2F7;
+    --border: #CBD5E0;
+    --border-light: #E2E8F0;
+    --green-bg: #F0FDF4;
+    --green-border: #86EFAC;
+    --green-text: #166534;
+    --yellow-bg: #FFFBEB;
+    --yellow-border: #FCD34D;
+    --yellow-text: #92400E;
+    --red-bg: #FEF2F2;
+    --red-border: #FCA5A5;
+    --red-text: #991B1B;
+    --white: #FFFFFF;
+    --font-ar: 'Cairo', 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.04);
+    --radius: 10px;
+    --radius-sm: 6px;
+    --radius-lg: 16px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-ar);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.8;
+    direction: rtl;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── PRINT ─────────────────────────────────── */
+  @media print {
+    .sidebar, .print-btn, .toc-toggle { display: none !important; }
+    .main-content { margin: 0 !important; }
+    body { background: white; font-size: 12pt; }
+    .cover { page-break-after: always; }
+    section { page-break-inside: avoid; }
+    .card { box-shadow: none; border: 1px solid var(--border); }
+  }
+
+  /* ── LAYOUT ─────────────────────────────────── */
+  .layout { display: flex; min-height: 100vh; }
+
+  .sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    background: var(--manar-blue);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+  }
+
+  .sidebar-logo {
+    padding: 28px 20px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .sidebar-logo .org-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+  }
+
+  .sidebar-logo .doc-type {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+    font-weight: 400;
+  }
+
+  .sidebar-nav { padding: 16px 0; flex: 1; }
+
+  .nav-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.08em;
+    padding: 4px 20px 8px;
+    text-transform: uppercase;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 20px;
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: right;
+    font-family: var(--font-ar);
+  }
+
+  .nav-item:hover, .nav-item.active {
+    background: rgba(255,255,255,0.1);
+    color: white;
+  }
+
+  .nav-item .nav-num {
+    width: 22px;
+    height: 22px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .nav-item.active .nav-num {
+    background: var(--accent);
+    color: white;
+  }
+
+  .sidebar-footer {
+    padding: 16px 20px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.5;
+  }
+
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 0 0 60px;
+  }
+
+  /* ── COVER ─────────────────────────────────── */
+  .cover {
+    background: linear-gradient(145deg, var(--manar-blue) 0%, #1E4D8C 60%, #2563A8 100%);
+    padding: 64px 64px 56px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 40px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .cover-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+
+  .cover-meta .tag {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.03em;
+  }
+
+  .cover-title {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    color: white;
+  }
+
+  .cover-subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 8px;
+  }
+
+  .cover-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .cover-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .cover-stat {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+  }
+
+  .cover-stat .stat-num {
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .cover-stat .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 400;
+  }
+
+  /* ── VERDICT BANNER ─────────────────────────── */
+  .verdict-banner {
+    margin: 32px 48px;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-right: 4px solid var(--green-text);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .verdict-banner .verdict-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--green-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+
+  .verdict-banner .verdict-text strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--green-text);
+    margin-bottom: 4px;
+  }
+
+  .verdict-banner .verdict-text p {
+    font-size: 13.5px;
+    color: var(--ink-secondary);
+    line-height: 1.6;
+  }
+
+  /* ── SECTION HEADER ─────────────────────────── */
+  .section-header {
+    padding: 48px 48px 0;
+    margin-bottom: 24px;
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--manar-blue);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+
+  .section-desc {
+    font-size: 14px;
+    color: var(--ink-muted);
+    max-width: 620px;
+    line-height: 1.7;
+  }
+
+  .section-divider {
+    width: 48px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin: 12px 0 0;
+  }
+
+  /* ── CONTENT AREA ─────────────────────────── */
+  .content-area { padding: 0 48px; }
+
+  /* ── SUMMARY TABLE ─────────────────────────── */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .summary-row {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .summary-row .sr-subject {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .summary-row .sr-verdict {
+    font-size: 12px;
+    color: var(--ink-muted);
+    line-height: 1.4;
+    text-align: left;
+    direction: ltr;
+    max-width: 200px;
+  }
+
+  /* ── PERSON CARDS ─────────────────────────── */
+  .person-cards { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; }
+
+  .person-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s;
+  }
+
+  .person-card:hover { box-shadow: var(--shadow-md); }
+
+  .person-card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .person-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--manar-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--manar-blue);
+    flex-shrink: 0;
+  }
+
+  .person-avatar.green { background: var(--green-bg); color: var(--green-text); }
+  .person-avatar.amber { background: var(--yellow-bg); color: var(--yellow-text); }
+
+  .person-info { flex: 1; }
+
+  .person-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--manar-blue);
+    margin-bottom: 2px;
+  }
+
+  .person-role {
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    font-weight: 400;
+  }
+
+  .risk-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .risk-low { background: var(--green-bg); color: var(--green-text); }
+  .risk-medium { background: var(--yellow-bg); color: var(--yellow-text); }
+  .risk-high { background: var(--red-bg); color: var(--red-text); }
+
+  .person-card-body { padding: 16px 24px; }
+
+  .finding-list { list-style: none; }
+
+  .finding-list li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 6px 0;
+    font-size: 13.5px;
+    color: var(--ink-secondary);
+    line-height: 1.6;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .finding-list li:last-child { border-bottom: none; }
+
+  .finding-list li::before {
+    content: '—';
+    color: var(--manar-mid);
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .verdict-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+
+  .verdict-green { background: var(--green-bg); color: var(--green-text); border: 1px solid var(--green-border); }
+  .verdict-yellow { background: var(--yellow-bg); color: var(--yellow-text); border: 1px solid var(--yellow-border); }
+
+  /* ── ATTENTION BOX ─────────────────────────── */
+  .attention-box {
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin: 16px 0;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .attention-box.yellow {
+    background: var(--yellow-bg);
+    border: 1px solid var(--yellow-border);
+    border-right: 4px solid #F59E0B;
+  }
+
+  .attention-box.green {
+    background: var(--green-bg);
+    border: 1px solid var(--green-border);
+    border-right: 4px solid #22C55E;
+  }
+
+  .attention-box.blue {
+    background: var(--manar-pale);
+    border: 1px solid #93C5FD;
+    border-right: 4px solid var(--accent);
+  }
+
+  .attention-box .att-icon { font-size: 20px; flex-shrink: 0; line-height: 1; }
+
+  .attention-box .att-body strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .attention-box.yellow .att-body strong { color: var(--yellow-text); }
+  .attention-box.green .att-body strong { color: var(--green-text); }
+  .attention-box.blue .att-body strong { color: var(--manar-blue); }
+
+  .attention-box .att-body p {
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+
+  .attention-box.yellow .att-body p { color: #78350F; }
+  .attention-box.green .att-body p { color: #14532D; }
+  .attention-box.blue .att-body p { color: var(--manar-blue); }
+
+  /* ── MASTER TABLE ─────────────────────────── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 28px;
+  }
+
+  .master-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: var(--white);
+  }
+
+  .master-table thead tr {
+    background: var(--manar-blue);
+    color: white;
+  }
+
+  .master-table thead th {
+    padding: 13px 16px;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .master-table tbody tr {
+    border-bottom: 1px solid var(--border-light);
+    transition: background 0.12s;
+  }
+
+  .master-table tbody tr:last-child { border-bottom: none; }
+  .master-table tbody tr:hover { background: var(--manar-pale); }
+
+  .master-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+    color: var(--ink-secondary);
+    line-height: 1.55;
+  }
+
+  .master-table td:first-child {
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .master-table td.td-role {
+    color: var(--ink-muted);
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  /* ── RECS ─────────────────────────────────── */
+  .rec-cards { display: flex; flex-direction: column; gap: 12px; }
+
+  .rec-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .rec-num {
+    width: 32px;
+    height: 32px;
+    background: var(--manar-blue);
+    color: white;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .rec-body strong {
+    display: block;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--manar-blue);
+    margin-bottom: 4px;
+  }
+
+  .rec-body p {
+    font-size: 13.5px;
+    color: var(--ink-secondary);
+    line-height: 1.65;
+  }
+
+  /* ── SPACER ─────────────────────────────────── */
+  .section-spacer { height: 48px; }
+
+  /* ── PRINT BTN ─────────────────────────────── */
+  .print-btn {
+    position: fixed;
+    bottom: 28px;
+    left: 28px;
+    background: var(--manar-blue);
+    color: white;
+    border: none;
+    border-radius: 24px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: var(--font-ar);
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s, transform 0.1s;
+    z-index: 200;
+  }
+
+  .print-btn:hover { background: var(--manar-mid); transform: translateY(-1px); }
+  .print-btn:active { transform: translateY(0); }
+
+  /* ── FOOTER ─────────────────────────────────── */
+  .doc-footer {
+    margin: 48px 48px 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .doc-footer .footer-org {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--manar-blue);
+  }
+
+  .doc-footer .footer-meta {
+    font-size: 11px;
+    color: var(--ink-muted);
+  }
+
+  .confidential-tag {
+    display: inline-block;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--ink-muted);
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+
+  /* ── RESPONSIVE ─────────────────────────────── */
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .cover { padding: 40px 28px; }
+    .cover-stats { grid-template-columns: 1fr 1fr; }
+    .section-header, .content-area { padding-left: 24px; padding-right: 24px; }
+    .verdict-banner { margin: 20px 24px; }
+    .summary-grid { grid-template-columns: 1fr; }
+    .doc-footer { margin: 32px 24px 0; flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    .cover-title { font-size: 26px; }
+    .cover-stats { grid-template-columns: 1fr; }
+    .cover-meta { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ══ SIDEBAR ══════════════════════════════════════════ -->
+  <nav class="sidebar" aria-label="قائمة التنقل">
+    <div class="sidebar-logo">
+      <div class="org-name">مؤسسة منار<br>للمشاركة المجتمعية</div>
+      <div class="doc-type">تقرير تدقيق استراتيجي — سري</div>
+    </div>
+
+    <div class="sidebar-nav">
+      <div class="nav-label">المحتويات</div>
+      <a class="nav-item active" href="#summary">
+        <span class="nav-num">1</span> الملخص التنفيذي
+      </a>
+      <a class="nav-item" href="#founders">
+        <span class="nav-num">2</span> المؤسسون
+      </a>
+      <a class="nav-item" href="#board">
+        <span class="nav-num">3</span> مجلس الإدارة والطاقم
+      </a>
+      <a class="nav-item" href="#funders">
+        <span class="nav-num">4</span> الممولون
+      </a>
+      <a class="nav-item" href="#partners">
+        <span class="nav-num">5</span> الشركاء المحليون
+      </a>
+      <a class="nav-item" href="#network">
+        <span class="nav-num">6</span> الشبكة المؤسسية
+      </a>
+      <a class="nav-item" href="#matrix">
+        <span class="nav-num">7</span> الجدول الموحّد
+      </a>
+      <a class="nav-item" href="#recs">
+        <span class="nav-num">8</span> التوصيات
+      </a>
+    </div>
+
+    <div class="sidebar-footer">
+      إصدار يونيو 2026<br>للاستخدام الداخلي فقط
+    </div>
+  </nav>
+
+  <!-- ══ MAIN ══════════════════════════════════════════════ -->
+  <main class="main-content">
+
+    <!-- COVER ─────────────────────────────────────────── -->
+    <div class="cover">
+      <div class="cover-meta">
+        <span class="tag">سري — داخلي</span>
+        <span class="tag">يونيو 2026</span>
+        <span class="tag">فعالية إسطنبول أكتوبر 2026</span>
+      </div>
+      <h1 class="cover-title">تقرير التدقيق الاستراتيجي</h1>
+      <div class="cover-subtitle">مؤسسة الزورد — Lazord Foundation</div>
+      <div class="cover-desc">فحص المواقف والارتباطات المرتبطة بالكيان الإسرائيلي لجميع أعضاء الفريق والممولين والشركاء</div>
+
+      <div class="cover-stats">
+        <div class="cover-stat">
+          <div class="stat-num">16</div>
+          <div class="stat-label">شخصاً ومؤسسةً تم تدقيقهم</div>
+        </div>
+        <div class="cover-stat">
+          <div class="stat-num">4</div>
+          <div class="stat-label">دول شريكة مشمولة</div>
+        </div>
+        <div class="cover-stat">
+          <div class="stat-num">15</div>
+          <div class="stat-label">حكم «لا إشكالية»</div>
+        </div>
+        <div class="cover-stat">
+          <div class="stat-num">1</div>
+          <div class="stat-label">نقطة انتباه للمتابعة</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VERDICT BANNER ────────────────────────────────── -->
+    <div class="verdict-banner">
+      <div class="verdict-icon">✓</div>
+      <div class="verdict-text">
+        <strong>الحكم الإجمالي: لا يوجد ارتباط موثّق مباشر بالكيان الإسرائيلي أو التطبيع</strong>
+        <p>بعد بحث معمّق في مصادر مفتوحة (ProPublica، LinkedIn، المواقع الرسمية، تقارير IRS، وسائل الإعلام الإقليمية)، لم يُعثر على أي دليل موثّق لارتباط مباشر بين مؤسسة الزورد أو فريقها القيادي أو ممولّيها أو شركائها المحليين وبين الكيان الإسرائيلي أو مشاريع التطبيع. نقطة انتباه واحدة تتعلق بالشبكة الأم لشريك الأردن موثّقة في القسم الرابع.</p>
+      </div>
+    </div>
+
+    <!-- ══ SECTION 1: SUMMARY ══════════════════════════════ -->
+    <section id="summary">
+      <div class="section-header">
+        <div class="section-eyebrow">القسم الأول</div>
+        <h2 class="section-title">الملخص التنفيذي</h2>
+        <p class="section-desc">جدول موجز بنتائج التدقيق لكل فئة من فئات الجهات المشمولة بالبحث.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="content-area">
+        <div class="summary-grid">
+
+          <div class="summary-row">
+            <div class="sr-subject">المؤسسون (آنا مانيس، نيلي كوربيل)</div>
+            <span class="risk-badge risk-low">لا إشكالية</span>
+          </div>
+          <div class="summary-row">
+            <div class="sr-subject">مجلس الإدارة (زينة عوض، جاك زوك، فلورا تريانتافيلو)</div>
+            <span class="risk-badge risk-low">لا إشكالية</span>
+          </div>
+          <div class="summary-row">
+            <div class="sr-subject">الممول الرئيسي (عائلة إيروين وهيلسايد كابيتال)</div>
+            <span class="risk-badge risk-low">لا إشكالية</span>
+          </div>
+          <div class="summary-row">
+            <div class="sr-subject">مؤسسة Scully Peretsman (مانح 2022)</div>
+            <span class="risk-badge risk-low">لا إشكالية</span>
+          </div>
+          <div class="summary-row">
+            <div class="sr-subject">شريك مصر: مركز جيرهارت / AUC</div>
+            <span class="risk-badge risk-low">لا إشكالية</span>
+          </div>
+          <div class="summary-row">
+            <div class="sr-subject">شريك الأردن: INJAZ الأردن</div>
+            <span class="risk-badge risk-medium">انتباه — راجع القسم 5</span>
+          </div>
+          <div class="summary-row">
+            <div class="sr-subject">شريك تونس: UTIL</div>
+            <span class="risk-badge risk-low">لا إشكالية</span>
+          </div>
+          <div class="summary-row">
+            <div class="sr-subject">شريك اليونان: HIGGS</div>
+            <span class="risk-badge risk-low">لا إشكالية</span>
+          </div>
+
+        </div>
+
+        <div class="attention-box blue">
+          <div class="att-icon">ℹ</div>
+          <div class="att-body">
+            <strong>منهجية البحث</strong>
+            <p>اعتمد هذا التدقيق على مصادر مفتوحة متعددة: تقارير IRS للجهات الأمريكية، قواعد بيانات ProPublica/Grantable، ملفات LinkedIn المهنية، المواقع الرسمية للمنظمات، تقارير وسائل الإعلام الإقليمية. جميع النتائج قابلة للتحقق عبر المصادر المذكورة.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-spacer"></div>
+
+    <!-- ══ SECTION 2: FOUNDERS ════════════════════════════ -->
+    <section id="founders">
+      <div class="section-header">
+        <div class="section-eyebrow">القسم الثاني</div>
+        <h2 class="section-title">المؤسسون</h2>
+        <p class="section-desc">آنا إيروين مانيس ونيلي كوربيل — مؤسستا مؤسسة الزورد.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="content-area">
+        <div class="person-cards">
+
+          <!-- Anna -->
+          <div class="person-card">
+            <div class="person-card-header">
+              <div class="person-avatar">أ م</div>
+              <div class="person-info">
+                <div class="person-name">آنا إيروين مانيس</div>
+                <div class="person-role">رئيسة مجلس الإدارة ومؤسسة — أمريكية</div>
+              </div>
+              <span class="risk-badge risk-low">لا إشكالية</span>
+            </div>
+            <div class="person-card-body">
+              <ul class="finding-list">
+                <li>بكالوريوس دراسات الشرق الأدنى من جامعة برينستون + ماجستير إدارة التعليم العالي من جامعة كولومبيا.</li>
+                <li>تدربت في <strong>أشوكا العالم العربي</strong> بالقاهرة — تعمل حصراً في 9 دول عربية (مصر، الأردن، المغرب، تونس، السعودية، الإمارات، لبنان، فلسطين، الكويت). لا وجود لها في إسرائيل.</li>
+                <li>لا يوجد أي تصريح علني أو نشاط رقمي أو ارتباط مؤسسي يُشير إلى تأييد الكيان الإسرائيلي.</li>
+                <li>اهتماماتها الخيرية وعائلتها (إيروين) تتمحور حول التعليم الأكاديمي والبيئة والمجتمعات المحلية.</li>
+              </ul>
+              <div class="verdict-pill verdict-green">✓ لا إشكالية — ملف نظيف بالكامل</div>
+            </div>
+          </div>
+
+          <!-- Nelly -->
+          <div class="person-card">
+            <div class="person-card-header">
+              <div class="person-avatar">ن ك</div>
+              <div class="person-info">
+                <div class="person-name">نيلي كوربيل</div>
+                <div class="person-role">مؤسسة مشاركة ومستشارة استراتيجية — فرنسية-مصرية</div>
+              </div>
+              <span class="risk-badge risk-low">لا إشكالية</span>
+            </div>
+            <div class="person-card-body">
+              <ul class="finding-list">
+                <li>15+ سنة من الخبرة في التربية المدنية وتنمية المواطنة في أوروبا وشمال أفريقيا والشرق الأوسط.</li>
+                <li>المديرة التنفيذية لـ <strong>Global Civic Consulting</strong> وعضو في شبكة التربية المدنية العربية — موجّهة حصراً للقطاع المدني العربي.</li>
+                <li>المديرة المشاركة السابقة لمركز جيرهارت في الجامعة الأمريكية بالقاهرة.</li>
+                <li>لا يوجد أي تصريح أو ارتباط يُشير إلى تأييد الكيان الإسرائيلي أو التطبيع.</li>
+              </ul>
+              <div class="verdict-pill verdict-green">✓ لا إشكالية — خلفية في القطاع المدني العربي فقط</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="section-spacer"></div>
+
+    <!-- ══ SECTION 3: BOARD ═══════════════════════════════ -->
+    <section id="board">
+      <div class="section-header">
+        <div class="section-eyebrow">القسم الثالث</div>
+        <h2 class="section-title">مجلس الإدارة والطاقم</h2>
+        <p class="section-desc">زينة عوض، جاك زوك، فلورا تريانتافيلو — أعضاء المجلس ومدير العمليات.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="content-area">
+        <div class="person-cards">
+
+          <!-- Zaina -->
+          <div class="person-card">
+            <div class="person-card-header">
+              <div class="person-avatar green">ز ع</div>
+              <div class="person-info">
+                <div class="person-name">زينة عوض</div>
+                <div class="person-role">عضوة مجلس الإدارة — أردنية-فلسطينية من القدس الشرقية</div>
+              </div>
+              <span class="risk-badge risk-low">إيجابية ✓</span>
+            </div>
+            <div class="person-card-body">
+              <ul class="finding-list">
+                <li>فلسطينية ولدت ونشأت في <strong>القدس الشرقية</strong> — هويتها الفلسطينية صريحة ومُعلنة في ملفها المهني وموقع الزورد الرسمي.</li>
+                <li>أطروحتها الجامعية (برينستون): <em>"شهادات الصدمة: الأثر النفسي للعنف على الشباب الفلسطيني"</em>.</li>
+                <li>عملت ميدانياً في مبادرة "مدرستي" التابعة للملكة رانيا في القدس الشرقية — شراكة مع INJAZ والـ Save the Children.</li>
+                <li>لا أي ارتباط بمنظمات مؤيدة للتطبيع — حضورها في المجلس مؤشر إيجابي صريح لمنار.</li>
+              </ul>
+              <div class="verdict-pill verdict-green">✓ مؤشر إيجابي — حضورها يُعزز مصداقية الشراكة</div>
+            </div>
+          </div>
+
+          <!-- Jack Zook -->
+          <div class="person-card">
+            <div class="person-card-header">
+              <div class="person-avatar">ج ز</div>
+              <div class="person-info">
+                <div class="person-name">جاك زوك</div>
+                <div class="person-role">عضو مجلس الإدارة وأمين الصندوق — أمريكي</div>
+              </div>
+              <span class="risk-badge risk-low">لا إشكالية</span>
+            </div>
+            <div class="person-card-body">
+              <ul class="finding-list">
+                <li>محاسب أمريكي متقاعد، مؤسس شركة Zook Dinon PA، وأستاذ فخري في جامعة La Salle.</li>
+                <li>نشاطه الخيري محلي في فيلادلفيا — لا حضور سياسي علني.</li>
+                <li>لا يوجد أي ارتباط بمنظمات داعمة للكيان الإسرائيلي.</li>
+              </ul>
+              <div class="verdict-pill verdict-green">✓ لا إشكالية — دور إداري بحت</div>
+            </div>
+          </div>
+
+          <!-- Flora -->
+          <div class="person-card">
+            <div class="person-card-header">
+              <div class="person-avatar">ف ت</div>
+              <div class="person-info">
+                <div class="person-name">فلورا تريانتافيلو</div>
+                <div class="person-role">مديرة العمليات — يونانية</div>
+              </div>
+              <span class="risk-badge risk-low">لا إشكالية</span>
+            </div>
+            <div class="person-card-body">
+              <ul class="finding-list">
+                <li>خلفية في الإدارة والموارد البشرية في شركات متعددة الجنسيات وفي القطاع العام بفرنسا.</li>
+                <li>متطوعة في الصليب الأحمر الفرنسي — خبرة عمل في 8 دول عبر 3 قارات.</li>
+                <li>لا تصريح أو ارتباط سياسي موثّق من أي نوع.</li>
+              </ul>
+              <div class="verdict-pill verdict-green">✓ لا إشكالية</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="section-spacer"></div>
+
+    <!-- ══ SECTION 4: FUNDERS ═════════════════════════════ -->
+    <section id="funders">
+      <div class="section-header">
+        <div class="section-eyebrow">القسم الرابع</div>
+        <h2 class="section-title">الممولون</h2>
+        <p class="section-desc">عائلة إيروين وشركة هيلسايد كابيتال ومؤسسة Scully Peretsman.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="content-area">
+        <div class="person-cards">
+
+          <!-- Irwin family -->
+          <div class="person-card">
+            <div class="person-card-header">
+              <div class="person-avatar">إ ن</div>
+              <div class="person-info">
+                <div class="person-name">عائلة إيروين — John N. Irwin III وHillside Capital Inc</div>
+                <div class="person-role">الممول الرئيسي متعدد السنوات (2019–2025)</div>
+              </div>
+              <span class="risk-badge risk-low">لا إشكالية</span>
+            </div>
+            <div class="person-card-body">
+              <ul class="finding-list">
+                <li>John N. Irwin III: مستثمر أمريكي، مؤسس مشارك لـ Hillside Capital Inc وBrookside Capital Partners — شركات استثمار صناعية ومالية خاصة.</li>
+                <li>رئيس مجلس إدارة مؤسستَي <strong>Achelis and Bodman Foundation</strong> و<strong>Watson Foundation</strong> — تركيزهما على التعليم والرفاه الاجتماعي الأمريكي بلا أي ارتباط بإسرائيل.</li>
+                <li>رئيس سابق للجنة الاستشارية لمعهد برينستون للدراسات الدولية والإقليمية.</li>
+                <li>لا توجد أي تبرعات أو ارتباطات موثّقة لمنظمات داعمة للكيان الإسرائيلي أو التطبيع.</li>
+              </ul>
+              <div class="verdict-pill verdict-green">✓ لا إشكالية — مستثمر أمريكي باهتمامات تعليمية وبيئية</div>
+            </div>
+          </div>
+
+          <!-- Scully Peretsman -->
+          <div class="person-card">
+            <div class="person-card-header">
+              <div class="person-avatar">س ب</div>
+              <div class="person-info">
+                <div class="person-name">مؤسسة Scully Peretsman</div>
+                <div class="person-role">مانح عام 2022 — مبلغ 10,000$</div>
+              </div>
+              <span class="risk-badge risk-low">لا إشكالية</span>
+            </div>
+            <div class="person-card-body">
+              <ul class="finding-list">
+                <li>نانسي بيريتسمان: مديرة إدارية في Allen &amp; Company LLC، وصية على جامعة برينستون لـ 21 عاماً — تبرعت بـ 20 مليون دولار لبناء قاعة Peretsman-Scully.</li>
+                <li>اهتمامات المؤسسة: التعليم، الطب، البحث العلمي، مساواة التعليم للأحياء المحرومة. لا ارتباط بمنظمات داعمة للكيان.</li>
+                <li>مساهمتها للزورد (10,000$) ضئيلة وتتوافق مع نمطها في دعم برامج التعليم الدولي.</li>
+              </ul>
+              <div class="verdict-pill verdict-green">✓ لا إشكالية — ملف خيري أكاديمي نظيف</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="section-spacer"></div>
+
+    <!-- ══ SECTION 5: LOCAL PARTNERS ═════════════════════ -->
+    <section id="partners">
+      <div class="section-header">
+        <div class="section-eyebrow">القسم الخامس</div>
+        <h2 class="section-title">الشركاء المحليون المنفّذون</h2>
+        <p class="section-desc">مصر (AUC/جيرهارت)، الأردن (INJAZ)، تونس (UTIL)، اليونان (HIGGS).</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="content-area">
+        <div class="person-cards">
+
+          <!-- AUC -->
+          <div class="person-card">
+            <div class="person-card-header">
+              <div class="person-avatar">م ج</div>
+              <div class="person-info">
+                <div class="person-name">مركز جيرهارت للعمل الخيري — الجامعة الأمريكية بالقاهرة</div>
+                <div class="person-role">الشريك المنفّذ في مصر (Pakiname Mamdouh، Nada Bahgat، Ayah Munir)</div>
+              </div>
+              <span class="risk-badge risk-low">لا إشكالية</span>
+            </div>
+            <div class="person-card-body">
+              <ul class="finding-list">
+                <li>مركز أكاديمي بحثي تأسس عام 2006 — يُعنى بتعزيز ثقافة المسؤولية الاجتماعية والمشاركة المدنية في المنطقة العربية.</li>
+                <li>في أكتوبر 2025، شهدت AUC <strong>احتجاجات طلابية واسعة</strong> رفضاً للتطبيع مع إسرائيل، وأجبرت السفير الأمريكي السابق لإسرائيل ومصر على مغادرة الحرم الجامعي. أكثر من 40 منظمة طلابية شاركت.</li>
+                <li>البيئة الداخلية لـ AUC مناهضة للتطبيع على المستويين الطلابي والمجتمعي.</li>
+              </ul>
+              <div class="verdict-pill verdict-green">✓ لا إشكالية — بيئة مناهضة للتطبيع بشكل واضح</div>
+            </div>
+          </div>
+
+          <!-- INJAZ -->
+          <div class="person-card">
+            <div class="person-card-header">
+              <div class="person-avatar amber">إن</div>
+              <div class="person-info">
+                <div class="person-name">INJAZ الأردن</div>
+                <div class="person-role">الشريك المنفّذ في الأردن (Thuria Ibraheme، Antoun Al-Twal)</div>
+              </div>
+              <span class="risk-badge risk-medium">⚠ انتباه — راجع التفصيل</span>
+            </div>
+            <div class="person-card-body">
+              <ul class="finding-list">
+                <li>أُسست تحت رعاية الملكة رانيا عام 2001 — تعمل في 12 محافظة أردنية عبر 300+ مؤسسة تعليمية.</li>
+                <li>Thuria Ibraheme (مديرة مشاريع) متخصصة في تشغيل الشباب الأردني — لا ارتباط سياسي موثّق لأي من فريق العمل.</li>
+                <li>الأردن يحتفظ بعلاقات دبلوماسية مع إسرائيل منذ 1994، لكن INJAZ نفسها لا تملك برامج مشتركة مع الكيان.</li>
+              </ul>
+
+              <div class="attention-box yellow" style="margin-top: 12px;">
+                <div class="att-icon">⚠</div>
+                <div class="att-body">
+                  <strong>نقطة الانتباه: Junior Achievement Worldwide وإسرائيل</strong>
+                  <p>الشبكة الأم العالمية لـ INJAZ هي <strong>JA Worldwide</strong>، وهي تضم فرعاً في إسرائيل يُسمى JA Israel. غير أن الفصل التنظيمي واضح وهيكلي: INJAZ الأردن تتبع لـ <strong>INJAZ Al-Arab / JA MENA</strong>، وهي مستقلة إقليمياً عن JA Europe التي يتبعها JA Israel. لا يوجد أي برنامج مشترك أو تعاون موثّق بين الطرفين. هذه نقطة تستوجب التوثيق الداخلي لا الإلغاء.</p>
+                </div>
+              </div>
+              <div class="verdict-pill verdict-yellow" style="margin-top: 12px;">⚠ انتباه — لا خطر مباشر، يستوجب توثيقاً داخلياً</div>
+            </div>
+          </div>
+
+          <!-- UTIL -->
+          <div class="person-card">
+            <div class="person-card-header">
+              <div class="person-avatar">ي ت</div>
+              <div class="person-info">
+                <div class="person-name">UTIL — اتحاد التونسيين من أجل الحرية</div>
+                <div class="person-role">الشريك المنفّذ في تونس (Moez Ali، Ali Cherif)</div>
+              </div>
+              <span class="risk-badge risk-low">لا إشكالية</span>
+            </div>
+            <div class="person-card-body">
+              <ul class="finding-list">
+                <li>منظمة مجتمع مدني تونسية تعمل على الحوكمة وتمكين الشباب ومكافحة الفساد.</li>
+                <li>تونس رسمياً ترفض التطبيع مع إسرائيل — رئيس الوزراء أكد عام 2020: <em>"التطبيع ليس على جدول الأعمال"</em>.</li>
+                <li>الرئيس قيس سعيد يُبدي معارضة صريحة لاتفاقيات أبراهام. حراك تونسي واسع لتجريم التطبيع.</li>
+                <li>لا يوجد أي ارتباط موثّق بين UTIL وأي مشاريع تطبيع.</li>
+              </ul>
+              <div class="verdict-pill verdict-green">✓ لا إشكالية — السياق التونسي مناهض للتطبيع</div>
+            </div>
+          </div>
+
+          <!-- HIGGS -->
+          <div class="person-card">
+            <div class="person-card-header">
+              <div class="person-avatar">هـ ي</div>
+              <div class="person-info">
+                <div class="person-name">HIGGS — اليونان</div>
+                <div class="person-role">الشريك المنفّذ في اليونان (Dr. Sotiris Petropoulos، Alexandra Emirza)</div>
+              </div>
+              <span class="risk-badge risk-low">لا إشكالية</span>
+            </div>
+            <div class="person-card-body">
+              <ul class="finding-list">
+                <li>منظمة يونانية داخلية لدعم القطاع غير الربحي — أسسها د. سوتيريس بيتروبولوس، أستاذ مشارك في العلوم السياسية بجامعة البيلوبونيز.</li>
+                <li>تركيزها الكامل على المجتمع المدني اليوناني والبلقاني — لا وجود لبرامج أو شراكات مع مؤسسات إسرائيلية.</li>
+                <li>اليونان وإسرائيل لهما علاقات دبلوماسية، لكن ذلك لا يُلزم HIGGS بأي موقف من التطبيع.</li>
+              </ul>
+              <div class="verdict-pill verdict-green">✓ لا إشكالية — منظمة مدنية داخلية بلا ارتباطات سياسية</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="section-spacer"></div>
+
+    <!-- ══ SECTION 6: NETWORK ══════════════════════════════ -->
+    <section id="network">
+      <div class="section-header">
+        <div class="section-eyebrow">القسم السادس</div>
+        <h2 class="section-title">الشبكة المؤسسية الأوسع</h2>
+        <p class="section-desc">سياق أشوكا العالم العربي وشبكة JA Worldwide وإسرائيل.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="content-area">
+
+        <div class="attention-box green">
+          <div class="att-icon">✓</div>
+          <div class="att-body">
+            <strong>أشوكا العالم العربي — لا إشكالية</strong>
+            <p>أشوكا العالم العربي (جهة تدريب آنا مانيس) تعمل في 9 دول عربية فقط: مصر، السعودية، الإمارات، المغرب، تونس، لبنان، فلسطين، الأردن، الكويت. لا وجود لها في إسرائيل. أشوكا Worldwide لديها مبادرة منفصلة تُسمى "Ashoka Jewish World &amp; Israel" لكنها مستقلة هيكلياً عن شبكة العالم العربي. التمييز بين الكيانين واضح ولا ارتباط بينهما.</p>
+          </div>
+        </div>
+
+        <div style="height: 16px;"></div>
+
+        <div class="attention-box yellow">
+          <div class="att-icon">⚠</div>
+          <div class="att-body">
+            <strong>Junior Achievement Worldwide وJA Israel — السياق الكامل</strong>
+            <p>JA Worldwide تضم 6 مراكز تشغيلية إقليمية. INJAZ Al-Arab هو مركز منطقة الشرق الأوسط وشمال أفريقيا. JA Israel يتبع لـ JA Europe — كيان تنظيمي مختلف تماماً. لم يُوثَّق أي برنامج مشترك أو تعاون مباشر بين INJAZ الأردن وJA Israel. الشراكة مع INJAZ الأردن ليست شراكة مع إسرائيل — الفصل تنظيمي لا جغرافي فقط.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="section-spacer"></div>
+
+    <!-- ══ SECTION 7: MASTER TABLE ════════════════════════ -->
+    <section id="matrix">
+      <div class="section-header">
+        <div class="section-eyebrow">القسم السابع</div>
+        <h2 class="section-title">الجدول الموحّد لنتائج التدقيق</h2>
+        <p class="section-desc">جميع الأفراد والمؤسسات المشمولة بالبحث في نظرة واحدة.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="content-area">
+        <div class="table-wrap">
+          <table class="master-table">
+            <thead>
+              <tr>
+                <th>الاسم / المؤسسة</th>
+                <th>الدور</th>
+                <th>النتائج الجوهرية</th>
+                <th>الحكم</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>آنا مانيس</td>
+                <td class="td-role">رئيسة / مؤسسة</td>
+                <td>تدربت في أشوكا العالم العربي (لا وجود لها في إسرائيل). لا ارتباط موثّق.</td>
+                <td><span class="risk-badge risk-low">لا إشكالية</span></td>
+              </tr>
+              <tr>
+                <td>نيلي كوربيل</td>
+                <td class="td-role">مؤسسة مشاركة / مستشارة</td>
+                <td>فرنسية-مصرية بالكامل في القطاع المدني العربي. لا ارتباط موثّق.</td>
+                <td><span class="risk-badge risk-low">لا إشكالية</span></td>
+              </tr>
+              <tr>
+                <td>زينة عوض</td>
+                <td class="td-role">عضوة مجلس الإدارة</td>
+                <td>فلسطينية من القدس الشرقية. أطروحتها عن صدمة الشباب الفلسطيني. مؤشر إيجابي.</td>
+                <td><span class="risk-badge risk-low">إيجابية ✓</span></td>
+              </tr>
+              <tr>
+                <td>جاك زوك</td>
+                <td class="td-role">عضو إدارة / أمين صندوق</td>
+                <td>محاسب أمريكي. اهتمامات خيرية محلية. لا حضور سياسي.</td>
+                <td><span class="risk-badge risk-low">لا إشكالية</span></td>
+              </tr>
+              <tr>
+                <td>فلورا تريانتافيلو</td>
+                <td class="td-role">مديرة العمليات</td>
+                <td>يونانية — خلفية إدارية وإنسانية. لا ارتباط سياسي موثّق.</td>
+                <td><span class="risk-badge risk-low">لا إشكالية</span></td>
+              </tr>
+              <tr>
+                <td>John N. Irwin III</td>
+                <td class="td-role">ممول رئيسي / والد آنا</td>
+                <td>مستثمر أمريكي. تبرعاته للتعليم والبيئة. لا ارتباط بمنظمات داعمة للكيان.</td>
+                <td><span class="risk-badge risk-low">لا إشكالية</span></td>
+              </tr>
+              <tr>
+                <td>Hillside Capital Inc</td>
+                <td class="td-role">شركة الممول الرئيسي</td>
+                <td>شركة استثمار صناعي خاصة. لا استثمارات إسرائيلية موثّقة.</td>
+                <td><span class="risk-badge risk-low">لا إشكالية</span></td>
+              </tr>
+              <tr>
+                <td>Scully Peretsman Fnd.</td>
+                <td class="td-role">مؤسسة مانحة (2022)</td>
+                <td>داعمة للتعليم الأمريكي. مساهمتها للزورد ضئيلة. لا ارتباط بمؤيدي الكيان.</td>
+                <td><span class="risk-badge risk-low">لا إشكالية</span></td>
+              </tr>
+              <tr>
+                <td>مركز جيرهارت / AUC</td>
+                <td class="td-role">شريك مصر</td>
+                <td>احتجاجات طلابية ضد السفير الأمريكي السابق لإسرائيل في 2025. بيئة مناهضة للتطبيع.</td>
+                <td><span class="risk-badge risk-low">لا إشكالية</span></td>
+              </tr>
+              <tr>
+                <td>INJAZ الأردن</td>
+                <td class="td-role">شريك الأردن</td>
+                <td>تحت رعاية الملكة رانيا. الشبكة الأم JA Worldwide لها فرع في إسرائيل لكن مستقل هيكلياً.</td>
+                <td><span class="risk-badge risk-medium">انتباه ⚠</span></td>
+              </tr>
+              <tr>
+                <td>UTIL تونس</td>
+                <td class="td-role">شريك تونس</td>
+                <td>تونس رسمياً ترفض التطبيع. لا دليل على اختلاف UTIL عن هذا الموقف.</td>
+                <td><span class="risk-badge risk-low">لا إشكالية</span></td>
+              </tr>
+              <tr>
+                <td>HIGGS اليونان</td>
+                <td class="td-role">شريك اليونان</td>
+                <td>منظمة مدنية داخلية يونانية. لا ارتباط بمنظمات أو برامج إسرائيلية.</td>
+                <td><span class="risk-badge risk-low">لا إشكالية</span></td>
+              </tr>
+              <tr>
+                <td>Pakiname Mamdouh</td>
+                <td class="td-role">مديرة / AUC مصر</td>
+                <td>خبيرة في الشراكات الدولية والتمويل الأوروبي. لا إشكالية موثّقة.</td>
+                <td><span class="risk-badge risk-low">لا إشكالية</span></td>
+              </tr>
+              <tr>
+                <td>Thuria Ibraheme</td>
+                <td class="td-role">مديرة مشاريع / INJAZ</td>
+                <td>متخصصة في تشغيل الشباب الأردني. لا ارتباط سياسي موثّق.</td>
+                <td><span class="risk-badge risk-low">لا إشكالية</span></td>
+              </tr>
+              <tr>
+                <td>Moez Ali / Ali Cherif</td>
+                <td class="td-role">قيادة UTIL تونس</td>
+                <td>ناشطان مدنيان في الحوكمة ومكافحة الفساد. لا إشكالية.</td>
+                <td><span class="risk-badge risk-low">لا إشكالية</span></td>
+              </tr>
+              <tr>
+                <td>Dr. Sotiris Petropoulos</td>
+                <td class="td-role">مؤسس HIGGS</td>
+                <td>أستاذ جامعي يوناني في العلوم السياسية. يركز على المجتمع المدني المحلي.</td>
+                <td><span class="risk-badge risk-low">لا إشكالية</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-spacer"></div>
+
+    <!-- ══ SECTION 8: RECOMMENDATIONS ════════════════════ -->
+    <section id="recs">
+      <div class="section-header">
+        <div class="section-eyebrow">القسم الثامن</div>
+        <h2 class="section-title">التوصيات الاستراتيجية</h2>
+        <p class="section-desc">أربع توصيات مبنية على نتائج التدقيق.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="content-area">
+        <div class="rec-cards">
+
+          <div class="rec-card">
+            <div class="rec-num">1</div>
+            <div class="rec-body">
+              <strong>المضي قدماً في شراكة الزورد لفعالية إسطنبول</strong>
+              <p>لا يوجد ما يمنع منار من التقدم في شراكة إسطنبول مع مؤسسة الزورد. الملف المؤسسي نظيف، والفريق القيادي يضم عضوة فلسطينية صريحة الهوية (زينة عوض)، وهو مؤشر إيجابي يُعزز مصداقية الشراكة أمام الجمهور والممولين الإقليميين.</p>
+            </div>
+          </div>
+
+          <div class="rec-card">
+            <div class="rec-num">2</div>
+            <div class="rec-body">
+              <strong>توثيق الفصل الهيكلي بين INJAZ الأردن وJA Israel</strong>
+              <p>يُنصح بإعداد ورقة موجزة داخلية تُوضّح الفصل التنظيمي الكامل بين INJAZ Al-Arab/INJAZ الأردن وبين Junior Achievement Israel، وإتاحتها لقيادة منار إذا أُثير التساؤل. هذه النقطة لا تُشكّل مانعاً للشراكة لكنها تستوجب وعياً مؤسسياً.</p>
+            </div>
+          </div>
+
+          <div class="rec-card">
+            <div class="rec-num">3</div>
+            <div class="rec-body">
+              <strong>التحديث الدوري للتدقيق</strong>
+              <p>هذا التدقيق يعكس الوضع حتى يونيو 2026. يُنصح بتحديث فحص الممولين والشركاء سنوياً أو عند التحولات الكبرى في المشهد الإقليمي، أو عند انضمام ممولين أو شركاء جدد لمؤسسة الزورد.</p>
+            </div>
+          </div>
+
+          <div class="rec-card">
+            <div class="rec-num">4</div>
+            <div class="rec-body">
+              <strong>التوظيف الاستراتيجي لحضور زينة عوض في المجلس</strong>
+              <p>حضور فلسطينية ذات خلفية أكاديمية وميدانية في مجلس إدارة الزورد يمكن توظيفه استراتيجياً في أي حوار خارجي حول طبيعة الشراكة، ويُعزز مصداقية التعاون أمام المستفيدين والجهات المانحة في المنطقة.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="section-spacer"></div>
+
+    <!-- FOOTER ─────────────────────────────────────────── -->
+    <div class="doc-footer">
+      <div>
+        <div class="footer-org">مؤسسة منار للمشاركة المجتمعية</div>
+        <div style="font-size: 11px; color: var(--ink-muted); margin-top: 2px;">وحدة الشراكات والبحث المؤسسي</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span class="confidential-tag">للاستخدام الداخلي فقط</span>
+        <span style="font-size: 11px; color: var(--ink-muted);">يونيو 2026</span>
+      </div>
+    </div>
+
+    <div style="height: 60px;"></div>
+
+  </main>
+</div>
+
+<!-- PRINT BUTTON ────────────────────────────────────── -->
+<button class="print-btn" onclick="window.print()" aria-label="طباعة التقرير">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <polyline points="6 9 6 2 18 2 18 9"></polyline>
+    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+    <rect x="6" y="14" width="12" height="8"></rect>
+  </svg>
+  طباعة / PDF
+</button>
+
+<script>
+  const navItems = document.querySelectorAll('.nav-item');
+  const sections = document.querySelectorAll('section[id]');
+
+  function updateNav() {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navItems.forEach(item => {
+      item.classList.toggle('active', item.getAttribute('href') === '#' + current);
+    });
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  navItems.forEach(item => {
+    item.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(item.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>
